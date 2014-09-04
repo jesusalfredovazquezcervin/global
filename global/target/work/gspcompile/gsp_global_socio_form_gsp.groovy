@@ -1,0 +1,115 @@
+import global.Socio
+import org.codehaus.groovy.grails.plugins.metadata.GrailsPlugin
+import org.codehaus.groovy.grails.web.pages.GroovyPage
+import org.codehaus.groovy.grails.web.taglib.*
+import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
+import org.springframework.web.util.*
+import grails.util.GrailsUtil
+
+class gsp_global_socio_form_gsp extends GroovyPage {
+public String getGroovyPageFileName() { "/WEB-INF/grails-app/views/socio/_form.gsp" }
+public Object run() {
+Writer out = getOut()
+Writer expressionOut = getExpressionOut()
+registerSitemeshPreprocessMode()
+printHtmlPart(0)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'nombre', 'error'))
+printHtmlPart(1)
+invokeTag('message','g',7,['code':("socio.nombre.label"),'default':("Nombre")],-1)
+printHtmlPart(2)
+invokeTag('textField','g',10,['name':("nombre"),'required':(""),'value':(socioInstance?.nombre)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'apellidoPaterno', 'error'))
+printHtmlPart(4)
+invokeTag('message','g',15,['code':("socio.apellidoPaterno.label"),'default':("Apellido Paterno")],-1)
+printHtmlPart(2)
+invokeTag('textField','g',18,['name':("apellidoPaterno"),'required':(""),'value':(socioInstance?.apellidoPaterno)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'apellidoMaterno', 'error'))
+printHtmlPart(5)
+invokeTag('message','g',23,['code':("socio.apellidoMaterno.label"),'default':("Apellido Materno")],-1)
+printHtmlPart(2)
+invokeTag('textField','g',26,['name':("apellidoMaterno"),'required':(""),'value':(socioInstance?.apellidoMaterno)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'fechaNacimiento', 'error'))
+printHtmlPart(6)
+invokeTag('message','g',31,['code':("socio.fechaNacimiento.label"),'default':("Fecha Nacimiento")],-1)
+printHtmlPart(7)
+invokeTag('datePicker','g',34,['name':("fechaNacimiento"),'precision':("day"),'value':(socioInstance?.fechaNacimiento),'default':("none"),'noSelection':(['': ''])],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'socioDesde', 'error'))
+printHtmlPart(8)
+invokeTag('message','g',39,['code':("socio.socioDesde.label"),'default':("Socio Desde")],-1)
+printHtmlPart(2)
+invokeTag('datePicker','g',42,['name':("socioDesde"),'precision':("day"),'value':(socioInstance?.socioDesde)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'sexo', 'error'))
+printHtmlPart(9)
+invokeTag('message','g',47,['code':("socio.sexo.label"),'default':("Sexo")],-1)
+printHtmlPart(2)
+invokeTag('select','g',50,['name':("sexo"),'from':(socioInstance.constraints.sexo.inList),'required':(""),'value':(socioInstance?.sexo),'valueMessagePrefix':("socio.sexo")],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'tipoMembresia', 'error'))
+printHtmlPart(10)
+invokeTag('message','g',55,['code':("socio.tipoMembresia.label"),'default':("Tipo Membresia")],-1)
+printHtmlPart(2)
+invokeTag('select','g',58,['id':("tipoMembresia"),'name':("tipoMembresia.id"),'from':(global.Membresia.list()),'optionKey':("id"),'required':(""),'value':(socioInstance?.tipoMembresia?.id),'class':("many-to-one")],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'calle', 'error'))
+printHtmlPart(11)
+invokeTag('message','g',63,['code':("socio.calle.label"),'default':("Calle")],-1)
+printHtmlPart(7)
+invokeTag('textField','g',66,['name':("calle"),'value':(socioInstance?.calle)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'ciudad', 'error'))
+printHtmlPart(12)
+invokeTag('message','g',71,['code':("socio.ciudad.label"),'default':("Ciudad")],-1)
+printHtmlPart(7)
+invokeTag('textField','g',74,['name':("ciudad"),'value':(socioInstance?.ciudad)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'codigoPostal', 'error'))
+printHtmlPart(13)
+invokeTag('message','g',79,['code':("socio.codigoPostal.label"),'default':("Codigo Postal")],-1)
+printHtmlPart(7)
+invokeTag('field','g',82,['name':("codigoPostal"),'type':("number"),'value':(socioInstance.codigoPostal)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'pais', 'error'))
+printHtmlPart(14)
+invokeTag('message','g',87,['code':("socio.pais.label"),'default':("Pais")],-1)
+printHtmlPart(7)
+invokeTag('select','g',90,['id':("pais"),'name':("pais.id"),'from':(global.Pais.list()),'optionKey':("id"),'value':(socioInstance?.pais?.id),'class':("many-to-one"),'noSelection':(['null': ''])],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'estado', 'error'))
+printHtmlPart(15)
+invokeTag('message','g',95,['code':("socio.estado.label"),'default':("Estado")],-1)
+printHtmlPart(7)
+invokeTag('select','g',98,['id':("estado"),'name':("estado.id"),'from':(global.Estado.list()),'optionKey':("id"),'value':(socioInstance?.estado?.id),'class':("many-to-one"),'noSelection':(['null': ''])],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'notificar', 'error'))
+printHtmlPart(16)
+invokeTag('message','g',103,['code':("socio.notificar.label"),'default':("Notificar")],-1)
+printHtmlPart(7)
+invokeTag('checkBox','g',106,['name':("notificar"),'value':(socioInstance?.notificar)],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'usuario', 'error'))
+printHtmlPart(17)
+invokeTag('message','g',111,['code':("socio.usuario.label"),'default':("Usuario")],-1)
+printHtmlPart(2)
+invokeTag('select','g',114,['id':("usuario"),'name':("usuario.id"),'from':(global.Usuario.list()),'optionKey':("id"),'required':(""),'value':(socioInstance?.usuario?.id),'class':("many-to-one")],-1)
+printHtmlPart(3)
+expressionOut.print(hasErrors(bean: socioInstance, field: 'fotografia', 'error'))
+printHtmlPart(18)
+invokeTag('message','g',119,['code':("socio.fotografia.label"),'default':("Fotografia")],-1)
+printHtmlPart(19)
+}
+public static final Map JSP_TAGS = new HashMap()
+protected void init() {
+	this.jspTags = JSP_TAGS
+}
+public static final String CONTENT_TYPE = 'text/html;charset=UTF-8'
+public static final long LAST_MODIFIED = 1407793867000L
+public static final String EXPRESSION_CODEC = 'html'
+public static final String STATIC_CODEC = 'none'
+public static final String OUT_CODEC = 'none'
+public static final String TAGLIB_CODEC = 'none'
+}
